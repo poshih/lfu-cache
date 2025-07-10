@@ -1,13 +1,17 @@
 /*
  * High-Performance LFU Cache with Hybrid API and Static Optimizations
  * 
- * MIT License - Copyright (c) 2024 Po Shih Tsang
+ * MIT License - Copyright (c) 2025 Po Shih Tsang
  * 
  * Author: Po Shih Tsang
  * GitHub: https://github.com/poshih/lfu-cache/
  * 
  * DESCRIPTION:
  * A static Fixed Size LFUCache, good for use when you already know the maximum size of the cache.
+ * TIME COMPLEXITY:
+ * get(): O(1) average case
+ * put(): O(1) average case
+ * SPACE COMPLEXITY: O(MaxSize) 
   */
 
 #ifndef LFU_CACHE_H
