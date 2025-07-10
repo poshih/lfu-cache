@@ -32,7 +32,7 @@ public:
     static constexpr size_t GROWTH_FACTOR = 2;
     
     // OPTIMIZATION: Memory layout optimization - cache-friendly Node structure
-    struct alignas(64) Node {  // Cache line aligned for better performance
+    struct Node {  // Cache line aligned for better performance
         // Hot fields first (accessed most frequently)
         int frequency;         // Most accessed field
         Node* prev;           // Pointer fields together  
