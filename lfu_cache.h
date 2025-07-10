@@ -31,13 +31,12 @@ public:
     static constexpr size_t INITIAL_SIZE_MULTIPLIER = 10;
     static constexpr size_t GROWTH_FACTOR = 2;
     
-    // OPTIMIZATION: Memory layout optimization - cache-friendly Node structure
-    struct Node {  // Cache line aligned for better performance
+    struct Node {
         // Hot fields first (accessed most frequently)
         int frequency;         // Most accessed field
         Node* prev;           // Pointer fields together  
-        Node* next;           
-        Key key;              // Key/value together for locality
+        Node* next;
+        Key key;
         Value value;
         
         Node() : frequency(0), prev(nullptr), next(nullptr) {}
@@ -290,20 +289,6 @@ public:
         }
         std::cout << "  Min frequency: " << minFrequency_ << "\n";
     }
-    
-    // OPTIMIZATION: Template specialization for small cache sizes
-    template<size_t Size = MaxSize>
-    std::enable_if_t<Size <= 16, void> optimizeForSmallSize() {
-        // Specialized optimizations for very small caches
-        // Could include loop unrolling, different data structures, etc.
-    }
 };
-
-// OPTIMIZATION: Template specialization for common types to reduce code bloat
-template<size_t MaxSize>
-using IntLFUCache = LFUCache<int, int, MaxSize>;
-
-template<size_t MaxSize>  
-using StringLFUCache = LFUCache<std::string, std::string, MaxSize>;
 
 #endif // LFU_CACHE_H

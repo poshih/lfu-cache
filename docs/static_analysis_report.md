@@ -221,7 +221,7 @@ struct Node {
 };
 ```
 
-**Optimization**: Reorder fields for better cache alignment.
+**Optimization**: Reorder fields for better memory access patterns.
 
 #### **Issue 2: Template Instantiation Optimization**
 **Location**: Multiple template instantiations with same memory layout
@@ -306,6 +306,6 @@ private:
 - **Dead code elimination**: 2-5% improvement (reduced code size)
 - **Function inlining**: 5-10% improvement (eliminated call overhead)
 - **Branch prediction hints**: 1-3% improvement (better speculation)
-- **Memory layout optimization**: 2-8% improvement (cache efficiency)
+- **Memory layout optimization**: 2-8% improvement (access efficiency)
 
 **Total Expected Improvement**: 10-25% performance gain through static optimizations alone.

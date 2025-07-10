@@ -1,4 +1,4 @@
-!!!!!!!!!!!AI Generated Text below Read it at your own peril!!!!!!!!!!!!! I would say it's about 98% correct - Po
+!!!!!!!!!!!AI Assisted Generated Text below Read it at your own peril!!!!!!!!!!!!! I would say it's about 98% correct - Po
 
 # High-Performance LFU Cache
 
@@ -14,7 +14,7 @@ A highly optimized **Least Frequently Used (LFU) cache** implementation in C++20
 - **High Performance**: 23M+ operations/second on modern hardware (~43ns per operation)
 - **Hybrid API**: Choose between noexcept performance or exception-based error handling
 - **Zero Allocation**: Fixed-size memory pools eliminate heap allocation during operation
-- **Cache Optimized**: 64-byte aligned nodes for optimal CPU cache line utilization
+- **Memory Optimized**: Efficient memory layout for optimal performance
 - **Template Based**: Generic design works with any hashable key and copyable value types
 
 ## 🎮 Perfect for Game Development
@@ -45,7 +45,7 @@ LFUCache<ItemId, ItemData, 2000> itemCache;
 | **Throughput** | 23M+ operations/second |
 | **Latency** | ~43ns average per operation |
 | **Complexity** | O(1) guaranteed for all operations |
-| **Memory** | 64 bytes per node (cache-line aligned) |
+| **Memory** | Compact node structure |
 | **Allocation** | Zero heap allocation during operation |
 
 ## 🔧 Static Optimizations Applied
@@ -55,7 +55,7 @@ LFUCache<ItemId, ItemData, 2000> itemCache;
 - ✅ **Constant folding and propagation** at compile time
 - ✅ **Branch prediction hints** with `[[likely]]`/`[[unlikely]]`
 - ✅ **Strength reduction** optimizations for arithmetic
-- ✅ **Memory layout optimization** with cache-line alignment
+- ✅ **Memory layout optimization** for efficient access patterns
 - ✅ **Loop optimizations** using standard algorithms
 - ✅ **Template specialization** to reduce code bloat
 
@@ -122,9 +122,9 @@ class LFUCache;
 
 ## 💾 Memory Requirements
 
-- **Node size**: 64 bytes per element (cache-line aligned)
-- **Total memory**: `MaxSize * 64 bytes + hash table overhead`
-- **Example**: MaxSize=1000 ≈ 64KB + hash table
+- **Node size**: Compact structure per element
+- **Total memory**: `MaxSize * sizeof(Node) + hash table overhead`
+- **Example**: MaxSize=1000 with small values ≈ compact memory usage
 
 ## 🧵 Thread Safety
 

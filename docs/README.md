@@ -30,12 +30,12 @@ This project demonstrates advanced C++ optimization techniques:
 3. **Branch Prediction** - `[[likely]]`/`[[unlikely]]` hints
 4. **Constant Folding** - Compile-time constant evaluation
 5. **Strength Reduction** - Optimizing arithmetic operations
-6. **Memory Layout** - Cache-line alignment optimization
+6. **Memory Layout** - Efficient data structure organization
 7. **Loop Optimization** - Standard algorithm usage
 8. **Template Specialization** - Reducing code bloat
 
 ### **Performance Engineering Concepts**
-- **Cache-conscious programming** with 64-byte alignment
+- **Memory-efficient programming** with optimized data structures
 - **Exception vs error code performance** trade-offs
 - **Memory pool design** for zero-allocation operation
 - **Hybrid API design** balancing performance and usability
@@ -53,7 +53,7 @@ This project demonstrates advanced C++ optimization techniques:
 - **Complexity**: O(1) guaranteed for all operations
 - **Throughput**: 23M+ operations/second
 - **Latency**: ~43ns average per operation
-- **Memory**: 64 bytes per node (cache-line aligned)
+- **Memory**: Compact node structure
 - **Allocation**: Zero heap allocation during operation
 
 ### **Compiler Requirements**
