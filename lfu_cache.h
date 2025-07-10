@@ -1,5 +1,5 @@
 /*
- * High-Performance LFU Cache with Hybrid API and Static Optimizations
+ * LFU Cache with Static Optimizations
  * 
  * MIT License - Copyright (c) 2025 Po Shih Tsang
  * 
