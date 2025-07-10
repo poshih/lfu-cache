@@ -7,81 +7,8 @@
  * GitHub: https://github.com/poshih/lfu-cache/
  * 
  * DESCRIPTION:
- * A highly optimized Least Frequently Used (LFU) cache implementation featuring
- * a hybrid API design that combines maximum performance with flexible error handling.
- * This implementation applies comprehensive static program analysis optimizations
- * for enterprise-grade performance requirements.
- * 
- * KEY FEATURES:
- * • True O(1) get() and put() operations guaranteed
- * • 23M+ operations/second on modern hardware  
- * • Hybrid noexcept/exception API for different use cases
- * • Zero heap allocation with fixed-size memory pools
- * • 64-byte cache-line aligned nodes for optimal performance
- * • Thread-safe design ready (when used with external synchronization)
- * 
- * STATIC OPTIMIZATIONS APPLIED:
- * • Dead code elimination for unreachable branches
- * • Aggressive function inlining for hot paths  
- * • Constant folding and propagation at compile time
- * • Branch prediction hints with [[likely]]/[[unlikely]]
- * • Strength reduction optimizations for arithmetic
- * • Memory layout optimization with cache-line alignment
- * • Loop optimizations using standard algorithms
- * • Template specialization to reduce code bloat
- * 
- * HYBRID API DESIGN:
- * • get(key) noexcept          → Maximum performance, returns Value{} for missing keys
- * • getOrThrow(key)            → Exception-based error handling when needed
- * • getOrDefault(key, default) → Safe access with custom fallback values
- * • put(), contains(), size()  → All noexcept for zero exception overhead
- * 
- * PERFORMANCE CHARACTERISTICS:
- * • Complexity: O(1) average and worst-case for all operations
- * • Throughput: 23M+ operations/second (measured on modern x86-64)
- * • Memory: Fixed-size pool, zero heap allocation during operation
- * • Latency: ~43ns average per operation in hot cache scenarios
- * • Cache efficiency: 64-byte aligned nodes, optimal for CPU cache lines
- * 
- * USAGE EXAMPLES:
- * 
- *   // Create cache: <Key, Value, MaxSize> template parameters
- *   LFUCache<int, std::string, 1000> cache;
- *   
- *   // HOT PATH - Maximum performance, noexcept
- *   cache.put(1, "value");
- *   auto value = cache.get(1);              // Returns "" if not found
- *   auto safe = cache.getOrDefault(2, "fallback");  // Custom fallback
- *   
- *   // ERROR HANDLING - When validation is needed
- *   try {
- *       auto value = cache.getOrThrow(999); // Throws std::runtime_error if not found
- *   } catch (const std::runtime_error& e) {
- *       // Handle missing key appropriately
- *   }
- *   
- *   // PERFORMANCE CRITICAL - Example hot loop
- *   for (int i = 0; i < 1000000; ++i) {
- *       if (cache.contains(key)) {          // noexcept check
- *           process(cache.get(key));        // noexcept access
- *       }
- *   }
- * 
- * TEMPLATE PARAMETERS:
- * • Key: Key type (must be hashable)
- * • Value: Value type (must be default constructible for noexcept get())
- * • MaxSize: Maximum number of elements (compile-time constant)
- * • Hash: Custom hash function (defaults to std::hash<Key>)
- * 
- * THREAD SAFETY:
- * This implementation is not thread-safe by design for maximum performance.
- * For concurrent access, wrap with external synchronization (std::mutex, etc.)
- * 
- * MEMORY REQUIREMENTS:
- * • Node size: 64 bytes per element (cache-line aligned)
- * • Total memory: MaxSize * 64 bytes + hash table overhead
- * • Example: 1000 elements ≈ 64KB + hash table
- */
+ * A static Fixed Size LFUCache, good for use when you already know the maximum size of the cache.
+  */
 
 #ifndef LFU_CACHE_H
 #define LFU_CACHE_H
