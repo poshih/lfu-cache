@@ -4,7 +4,7 @@
  * MIT License - Copyright (c) 2024 Po Shih Tsang
  * 
  * Author: Po Shih Tsang
- * GitHub: https://github.com/poshihtsang
+ * GitHub: https://github.com/poshih/lfu-cache/
  * 
  * DESCRIPTION:
  * A highly optimized Least Frequently Used (LFU) cache implementation featuring
